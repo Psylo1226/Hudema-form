@@ -4,7 +4,7 @@ from utils import customMessagebox,textBox
 from resultScreen import resultBox
 
 root = tk.Tk()
-root.title("LLama")
+root.title("Formularz")
 
 
 entries = []
