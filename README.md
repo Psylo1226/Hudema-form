@@ -25,6 +25,6 @@ This repository contains the implementation of a recommendation model for educat
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ## Acknowledgments
-- [Llama 2](https://ai.meta.com/llama/) for providing the base model.
+- [Llama 3](https://ai.meta.com/llama/) for providing the base model.
 - Members of our academic research group for their valuable feedback and support.
 
