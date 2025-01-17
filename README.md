@@ -1,7 +1,7 @@
 # Recommendation Model for Educational Courses
 
 ## Overview
-This repository contains the implementation of a recommendation model for educational courses, based on the Llama 2 model. The goal of the project is to suggest courses to users by analyzing the data stored in a JSON file containing course information and metadata. The recommendations will be displayed in a format similar to the example provided in the attached project plan.
+This repository contains the implementation of a recommendation model for educational courses, based on the Llama 3 model. The goal of the project is to suggest courses to users by analyzing the data stored in a JSON file containing course information and metadata. The recommendations will be displayed in a format similar to the example provided in the attached project plan.
 
 ## Key Features
 - **Course Recommendation**: The model suggests courses tailored to user preferences and needs.
