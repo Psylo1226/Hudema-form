@@ -5,7 +5,7 @@ This repository contains the implementation of a recommendation model for educat
 
 ## Key Features
 - **Course Recommendation**: The model suggests courses tailored to user preferences and needs.
-- **Integration with Llama 3**: Utilizes the power of Llama 2 for natural language understanding and enhanced recommendation logic.
+- **Integration with Llama 3**: Utilizes the power of Llama 3 for natural language understanding and enhanced recommendation logic.
 - **JSON Data Handling**: Reads and processes course data stored in a JSON file.
 - **User-Friendly Interface**: Recommendations are displayed in a structured and visually appealing format.
 
