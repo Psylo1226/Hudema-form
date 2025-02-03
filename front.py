@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
+
+from logic import recommend_course
 from utils import customMessagebox,textBox
 from resultScreen import resultBox
 
@@ -15,7 +17,9 @@ for index, text in enumerate(text_fields, start=1):
     entries.append(entry)
 
 def submitResults():
-    resultBox(root, entries, text_fields)
+    user_input = " ".join(entry.get() for entry in entries)
+    recommended_course = recommend_course(user_input)
+    resultBox(root, recommended_course)  # Przekazujemy tylko nazwę kursu
 
 submit_button = tk.Button(root, text="Prześlij", command=submitResults, font=("Arial", 16))
 submit_button.grid(row=len(text_fields) * 2 + 1, column=0, columnspan=2, pady=10)
