@@ -10,16 +10,18 @@ root.title("Formularz")
 
 
 entries = []
-text_fields = ["Tytuł", "Tematyka", "Poziom zainteresowania"]
+text_fields = ["Szukana tematyka", "Posiadane umiejętności", "Poziom zaawansowania"]
 
 for index, text in enumerate(text_fields, start=1):
     entry = textBox(root, text, index)
     entries.append(entry)
 
 def submitResults():
-    user_input = " ".join(entry.get() for entry in entries)
-    recommended_course = recommend_course(user_input)
-    resultBox(root, recommended_course)  # Przekazujemy tylko nazwę kursu
+    search_topic = entries[0].get()  # Tytuł kursu lub jego temat
+    search_skills = entries[1].get()  # Posiadane umiejętności
+    search_level = entries[2].get()  # Pożądany poziom
+    recommended_course = recommend_course(search_topic, search_skills, search_level)
+    resultBox(root, recommended_course)
 
 submit_button = tk.Button(root, text="Prześlij", command=submitResults, font=("Arial", 16))
 submit_button.grid(row=len(text_fields) * 2 + 1, column=0, columnspan=2, pady=10)
