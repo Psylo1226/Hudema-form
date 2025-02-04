@@ -23,6 +23,7 @@ polish_stopwords = ["i", "w", "na", "do", "że", "ten", "jak", "ale", "jest", "c
 vectorizer = TfidfVectorizer(stop_words=polish_stopwords)
 course_vectors = vectorizer.fit_transform(course_texts)
 
+
 def recommend_course(search_topic, search_skills, search_level, weights=(0.6, 0.3, 0.1)):
     # Łączymy różne części zapytania w jeden wektor
     query_texts = [
@@ -39,11 +40,19 @@ def recommend_course(search_topic, search_skills, search_level, weights=(0.6, 0.
 
     # Łączymy wyniki zgodnie z wagami
     total_similarity = (
-        weights[0] * similarities[0] +  # Temat ma największą wagę
-        weights[1] * similarities[1] +  # Umiejętności są mniej istotne
-        weights[2] * similarities[2]    # Poziom ma najmniejszą wagę
+            weights[0] * similarities[0] +  # Temat ma największą wagę
+            weights[1] * similarities[1] +  # Umiejętności są mniej istotne
+            weights[2] * similarities[2]  # Poziom ma najmniejszą wagę
     )
 
     # Wybór najlepszego kursu
     best_match_idx = np.argmax(total_similarity)
-    return course_names[best_match_idx]
+
+    # Pobranie informacji o kursie
+    best_course = courses[best_match_idx]
+    course_name = best_course["course_name"]
+    course_goals = best_course["course_goals"]
+    course_program = best_course["course_program"]
+
+    return course_name, course_goals, course_program
+

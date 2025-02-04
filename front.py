@@ -20,8 +20,13 @@ def submitResults():
     search_topic = entries[0].get()  # Tytuł kursu lub jego temat
     search_skills = entries[1].get()  # Posiadane umiejętności
     search_level = entries[2].get()  # Pożądany poziom
-    recommended_course = recommend_course(search_topic, search_skills, search_level)
-    resultBox(root, recommended_course)
+
+    # Pobranie rekomendowanego kursu
+    recommended_course, course_goals, course_program = recommend_course(search_topic, search_skills, search_level)
+
+    # Wywołanie okna wyników
+    resultBox(root, recommended_course, course_goals, course_program)
+
 
 submit_button = tk.Button(root, text="Prześlij", command=submitResults, font=("Arial", 16))
 submit_button.grid(row=len(text_fields) * 2 + 1, column=0, columnspan=2, pady=10)
