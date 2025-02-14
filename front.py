@@ -24,7 +24,7 @@ for index, text in enumerate(text_fields, start=1):
     entries.append(entry)
 
 
-# 📌 Efekty hover i kliknięcia dla przycisków
+#  Efekty hover i kliknięcia dla przycisków
 def on_enter(e):
     e.widget.config(bg="#218838")  # Ciemniejszy zielony
 
@@ -41,7 +41,7 @@ def close_on_leave(e):
     e.widget.config(bg="#dc3545")  # Jasny czerwony
 
 
-# 📌 Funkcja do wyświetlania wyników
+#  Funkcja do wyświetlania wyników
 def show_results(top_courses):
     global result_frame
 
@@ -147,7 +147,7 @@ def show_results(top_courses):
     close_button.bind("<Leave>", close_on_leave)
 
 
-# 📌 Funkcja zamykająca wyniki
+#  Funkcja zamykająca wyniki
 def close_results():
     if hasattr(root, "result_frame"):
         root.result_frame.destroy()
