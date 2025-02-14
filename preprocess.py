@@ -11,12 +11,20 @@ def lemmatize_text(text):
 with open("coursedata 1.json", "r", encoding="utf-8") as f:
     courses = json.load(f)
 
+unique_courses = {}
+for course in courses:
+    course_name = course['course_name']
+    unique_courses[course_name] = course
+
+
+unique_courses = list(unique_courses.values())
+
 # Lematyzacja i zapis do nowego pliku
 def preprocess():
-    for course in courses:
+    for course in unique_courses:
         combined_text = " ".join(
             [course["course_name"], course["course_goals"], course["course_results"], course["course_program"]])
         course["lemmatized_text"] = lemmatize_text(combined_text)
         # Zapis lematyzowanych danych
         with open("lemmatized_courses.json", "w", encoding="utf-8") as f:
-            json.dump(courses, f, ensure_ascii=False, indent=4)
+            json.dump(unique_courses, f, ensure_ascii=False, indent=4)

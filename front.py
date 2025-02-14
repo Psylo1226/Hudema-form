@@ -1,18 +1,17 @@
 import tkinter as tk
-from logic import recommend_course
-from utils import textBox,ParticleBackground
+from logic import recommend_courses
+from utils import textBox, ParticleBackground
 
 root = tk.Tk()
 root.title("🚀 Formularz")
-root.configure(bg="#343a40")  
-root.geometry(f"{root.winfo_screenwidth()}x{root.winfo_screenheight()}")  
-
+root.configure(bg="#343a40")
+root.geometry(f"{root.winfo_screenwidth()}x{root.winfo_screenheight()}")
 
 bg = ParticleBackground(root, root.winfo_screenwidth(), root.winfo_screenheight(), 100)
 
-
 main_frame = tk.Frame(root, bg="white", bd=3, relief="solid")
-main_frame.place(relx=0.5, rely=0.5, anchor="center", width=root.winfo_screenwidth() * 0.6, height=root.winfo_screenheight() * 0.7)
+main_frame.place(relx=0.5, rely=0.5, anchor="center", width=root.winfo_screenwidth() * 0.7,
+                 height=root.winfo_screenheight() * 0.9)
 
 form_frame = tk.Frame(main_frame, bg="white")
 form_frame.pack(fill="both", expand=True, padx=30, pady=20)
@@ -24,21 +23,26 @@ for index, text in enumerate(text_fields, start=1):
     entry = textBox(form_frame, text, index)
     entries.append(entry)
 
+
 # 📌 Efekty hover i kliknięcia dla przycisków
 def on_enter(e):
     e.widget.config(bg="#218838")  # Ciemniejszy zielony
 
+
 def on_leave(e):
     e.widget.config(bg="#28a745")  # Jasny zielony
+
 
 def close_on_enter(e):
     e.widget.config(bg="#c82333")  # Ciemniejszy czerwony
 
+
 def close_on_leave(e):
     e.widget.config(bg="#dc3545")  # Jasny czerwony
 
+
 # 📌 Funkcja do wyświetlania wyników
-def show_results(course_name, course_goals, course_program):
+def show_results(top_courses):
     global result_frame
 
     # Usuwanie poprzednich wyników, jeśli istnieją
@@ -67,56 +71,63 @@ def show_results(course_name, course_goals, course_program):
     canvas.pack(side="left", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y")
 
-    # Nagłówek kursu
-    tk.Label(
-        scroll_frame,
-        text=course_name,
-        font=("Arial", 22, "bold"),
-        fg="#343a40",
-        bg="white",
-        wraplength=root.winfo_screenwidth() * 0.5,  # Maksymalna szerokość = 50% ekranu
-        justify="center"  # Wyśrodkowanie tekstu
-    ).pack(pady=10, padx=20, anchor="w")
+    # Iterujemy po kursach i wyświetlamy je jeden po drugim
+    for course in top_courses:
+        course_name, course_goals, course_program = course
 
-    # Cele kursu
-    tk.Label(
-        scroll_frame,
-        text="🎯 Cele kursu:",
-        font=("Arial", 16, "bold"),
-        fg="#007bff",
-        bg="white"
-    ).pack(anchor="w", padx=20, pady=(10, 0))
+        # Nagłówek kursu
+        tk.Label(
+            scroll_frame,
+            text=course_name,
+            font=("Arial", 22, "bold"),
+            fg="#343a40",
+            bg="white",
+            wraplength=root.winfo_screenwidth() * 0.5,  # Maksymalna szerokość = 50% ekranu
+            justify="center"  # Wyśrodkowanie tekstu
+        ).pack(pady=10, padx=20, anchor="w")
 
-    goals_label = tk.Label(
-        scroll_frame,
-        text=course_goals,
-        font=("Arial", 14),
-        fg="#495057",
-        bg="white",
-        wraplength=root.winfo_screenwidth() * 0.5,
-        justify="left"
-    )
-    goals_label.pack(anchor="w", padx=20, pady=5)
+        # Cele kursu
+        tk.Label(
+            scroll_frame,
+            text="🎯 Cele kursu:",
+            font=("Arial", 16, "bold"),
+            fg="#007bff",
+            bg="white"
+        ).pack(anchor="w", padx=20, pady=(10, 0))
 
-    # Program kursu
-    tk.Label(
-        scroll_frame,
-        text="📚 Program kursu:",
-        font=("Arial", 16, "bold"),
-        fg="#28a745",
-        bg="white"
-    ).pack(anchor="w", padx=20, pady=(10, 0))
+        goals_label = tk.Label(
+            scroll_frame,
+            text=course_goals,
+            font=("Arial", 14),
+            fg="#495057",
+            bg="white",
+            wraplength=root.winfo_screenwidth() * 0.5,
+            justify="left"
+        )
+        goals_label.pack(anchor="w", padx=20, pady=5)
 
-    program_label = tk.Label(
-        scroll_frame,
-        text=course_program,
-        font=("Arial", 14),
-        fg="#495057",
-        bg="white",
-        wraplength=root.winfo_screenwidth() * 0.5,
-        justify="left"
-    )
-    program_label.pack(anchor="w", padx=20, pady=5)
+        # Program kursu
+        tk.Label(
+            scroll_frame,
+            text="📚 Program kursu:",
+            font=("Arial", 16, "bold"),
+            fg="#28a745",
+            bg="white"
+        ).pack(anchor="w", padx=20, pady=(10, 0))
+
+        program_label = tk.Label(
+            scroll_frame,
+            text=course_program,
+            font=("Arial", 14),
+            fg="#495057",
+            bg="white",
+            wraplength=root.winfo_screenwidth() * 0.5,
+            justify="left"
+        )
+        program_label.pack(anchor="w", padx=20, pady=5)
+
+        # Dodanie separatora dla kursu
+        tk.Label(scroll_frame, text="-" * 60, bg="white").pack(pady=10, padx=20, anchor="w")
 
     # Przycisk zamknięcia wyników
     close_button = tk.Button(
@@ -135,6 +146,7 @@ def show_results(course_name, course_goals, course_program):
     close_button.bind("<Enter>", close_on_enter)
     close_button.bind("<Leave>", close_on_leave)
 
+
 # 📌 Funkcja zamykająca wyniki
 def close_results():
     if hasattr(root, "result_frame"):
@@ -145,9 +157,9 @@ def submitResults():
     search_topic = entries[0].get()
     search_skills = entries[1].get()
     search_level = entries[2].get()
-    
-    recommended_course, course_goals, course_program = recommend_course(search_topic, search_skills, search_level)
-    show_results(recommended_course, course_goals, course_program)
+
+    top_courses = recommend_courses(search_topic, search_skills, search_level)
+    show_results(top_courses)
 
 
 # Przycisk "Prześlij"
@@ -169,7 +181,6 @@ submit_button = tk.Button(
 submit_button.grid(row=len(text_fields) * 2 + 1, column=0, columnspan=2, pady=20, ipadx=15, ipady=8)
 submit_button.bind("<Enter>", on_enter)
 submit_button.bind("<Leave>", on_leave)
-
 
 root.update_idletasks()
 root.state("zoomed")  # Pełnoekranowe okno

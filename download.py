@@ -1,7 +1,7 @@
 import os
 import requests
 
-file_url = 'https://www.dropbox.com/scl/fi/bok0z7jpzhaeg8kk9ul1g/lemmatized_courses.json?rlkey=asxt8vy6ngdzc2s71kwk54o0a&st=yhxi0pfv&dl=1'
+file_url = 'https://www.dropbox.com/scl/fi/ftdx438if9upbdvwu0mu2/lemmatized_courses.json?rlkey=rtif6wbd39fyj3jitpfbimpzl&st=mszmbia0&dl=1'
 
 
 def download_file(file_path):
