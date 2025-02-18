@@ -20,6 +20,10 @@ This repository contains the implementation of a recommendation model for educat
    pip install -r requirements.txt
    ```
 3. Add your course JSON file to the `data/` directory.
+4. Run the application:
+   ```bash
+   python front.py
+   ```
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
