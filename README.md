@@ -20,8 +20,7 @@ This repository contains the implementation of a recommendation model for educat
    ```bash
    pip install -r requirements.txt
    ```
-3. Add your course JSON file to the `data/` directory.
-4. Run the application:
+3. Run the application:
    ```bash
    python front.py
    ```
