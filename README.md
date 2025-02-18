@@ -12,8 +12,9 @@ This repository contains the implementation of a recommendation model for educat
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/recommendation-model.git
-   cd recommendation-model
+   git clone https://github.com/Psylo1226/Hudema-form.git
+   git checkout -b front
+   git pull origin front
    ```
 2. Install dependencies:
    ```bash
