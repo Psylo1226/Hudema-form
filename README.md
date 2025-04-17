@@ -28,3 +28,10 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 - [Llama 3](https://ai.meta.com/llama/) for providing the base model.
 - Members of our academic research group for their valuable feedback and support.
 
+# How to run the file
+
+The `Training_LLAMA.ipynb` file was created to train the model on the basis of the LLAMA model.
+
+The `Run_model.ipynb` file was created to use model. We need to complete the last cell by specifying which course topics we are interested in.
+
+In both cases, we just need to add the google colab defined key with hugging_face.
